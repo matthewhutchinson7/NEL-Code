@@ -24,11 +24,13 @@ def rand_date(start,end):
 #send to excel file
 def generate_dataframe(file_name,column_name,start,end):
     IDList = np.random.choice(100000,100000)
+    DiagnosisList = np.random.randint(1,6,100000)
     DateList = []
     for n in range(100000):
         date = rand_date(start,end)
         DateList.append(date)
-    data = {'EncounterID': IDList, column_name: DateList}
+    data = {'SK_EncounterID': IDList, column_name: DateList,'DiagnosisNumber': 
+            DiagnosisList}
     df = pd.DataFrame(data)
 
     df.to_excel(file_name)
